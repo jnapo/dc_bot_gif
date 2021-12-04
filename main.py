@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from get_gif import download_gif
 from discord.utils import get
 
 client = commands.Bot(command_prefix="+")
@@ -7,7 +8,10 @@ client.remove_command('help')
 
 # embed for command help
 embed = discord.Embed(title="Available commands", color=0x0000ff)
-embed.add_field(name="+gif", value="I will send you a gif with your text", inline=False)
+embed.add_field(name="+gif",
+                value="I will send you a gif with your text and font, "
+                      "if you want to send text with spaces surround it with \" \"",
+                inline=False)
 
 
 # Bot is running properly
@@ -35,7 +39,9 @@ async def help(ctx):
 
 
 @client.command()
-async def gif(ctx):
-    pass
+async def gif(ctx, text="JP2GMD", font=70):
+    download_gif(text, font)
+    await ctx.send(file=discord.File('text.gif'))
+
 
 client.run('TOKEN')
