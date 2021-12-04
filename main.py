@@ -43,10 +43,7 @@ async def help(ctx):
 @client.command()
 async def gif(ctx, text="JP2GMD", font=70):
     download_gif(text, font)
-    try:
-        await ctx.send(file=discord.File('text.gif'))
-    except:
-        await ctx.send(ctx.error)
+    await ctx.send(file=discord.File('text.gif'))
 
 
 client.run('TOKEN')
