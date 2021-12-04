@@ -49,4 +49,4 @@ async def gif(ctx, text="JP2GMD", font=70):
         await ctx.send(ctx.error)
 
 
-client.run('OTE2NzgyMDE2NDU5MDYzMzI2.YavJyQ.pHcFfcGOktCbqIJY-9yq3-uZPdo')
+client.run('TOKEN')
