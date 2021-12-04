@@ -27,6 +27,8 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send(embed=embed)
         await ctx.message.delete()
+    elif isinstance(error, commands.BadArgument):
+        await ctx.send("That's not what I wanted")
     else:
         print(str(error))
 
@@ -41,7 +43,10 @@ async def help(ctx):
 @client.command()
 async def gif(ctx, text="JP2GMD", font=70):
     download_gif(text, font)
-    await ctx.send(file=discord.File('text.gif'))
+    try:
+        await ctx.send(file=discord.File('text.gif'))
+    except:
+        await ctx.send(ctx.error)
 
 
-client.run('TOKEN')
+client.run('OTE2NzgyMDE2NDU5MDYzMzI2.YavJyQ.pHcFfcGOktCbqIJY-9yq3-uZPdo')
